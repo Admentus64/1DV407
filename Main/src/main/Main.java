@@ -1,21 +1,25 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Main.java
+ * Date: 18 September, 2014
+ * Created by: Robert Willem Hallink
  */
 package main;
 
-/**
- *
- * @author Robin
+/*
+ * This main java file has no function for this exercise yet.
+ * The file is created so that NetBeans can push the project to GitHub.
+ * This workshop requires only diagrams so far, which are also uploaded to GitHub.
  */
-public class Main {
+public class Main {	//Class Main starts
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+    public static void main(String[] args) {	//Method main starts
+        
+        /*
+         * No codes here yet.
+         * No code required for this workshop.
+         * File is only required for the push to GitHub.
+         */
+        
+    }	//Method main ends
     
-}
+}	//Class Main ends
