@@ -1,8 +1,4 @@
 ---START MEMBERS---
-Bubs Rocks 1955-346335
-Ricky Membs 1992-45
 ---END MEMBERS---
 ---START BOATS---
-Kano 139 1955-346335
-Driver 245 null
 ---END BOATS---

@@ -27,7 +27,10 @@ public class RunProgram {     //Class RunProgram starts
         Club club;
         if (Document.fileExists("Files/Club.txt"))
             club = loadData(console);
-        else club = new Club(console);
+        else {
+            Document.createFile("Files/Club.txt");
+            club = new Club(console);
+        }
         
         RunClub runClub = new RunClub(console, club);
         runClub.activate();

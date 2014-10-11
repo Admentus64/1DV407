@@ -130,4 +130,19 @@ public class Document {
         
     }   //Static method FileExists ends
     
+    public static void createFile(String path) throws UnsupportedEncodingException, IOException {   //Method createFile starts
+        
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(new File(path), false)) ) {
+            writer.write("---START MEMBERS---");
+            writer.newLine();
+            writer.write("---END MEMBERS---");
+            writer.newLine();
+            writer.write("---START BOATS---");
+            writer.newLine();
+            writer.write("---END BOATS---");
+            writer.close();
+        }
+        
+    }   //Method createFile ends
+    
 }
