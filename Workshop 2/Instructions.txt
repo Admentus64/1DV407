@@ -1,0 +1,39 @@
+In order to run the .jar file you need to use a command program such as Windows CMD.exe tool.
+Use CMD to get into the folder of the .jar file and run the command: "java -jar workshop_2.jar".
+Alternative you can simply run the .bat file Workshop_2.bat which directly starts the .jar file.
+
+
+
+This works on Windows as long as both files are located within the same folder.
+It is not tested on other systems such as Apple or Linux.
+Most likely it will not work directly, and would require some adjustments.
+I can not offer any help for any systems other than Windows. Please consult google.com.
+
+
+---------------------------------
+--- Installation Requirements ---
+---------------------------------
+
+Java Development Kit (JDK), version 8 (7 is not guaranteed to work).
+JDK8 (version 1.8.0_20) was used for development for the exercise.
+Any version of JDK8 will most likely work.
+
+Java Runtine Environment (JRE), version 8 (7 is not guaranteed to work).
+JRE8 (version 1.8.0_20) was used for development for the exercise.
+Any version of JRE8 will most likely work.
+Installing JDK8 will also install JRE8.
+
+Java Development Environment Tool (only required when running the program directly from the .java files)
+NetBeans 8.0.1 was used for development for the exercise.
+Most versions of NetBeans most likely work, try using the latest version.
+Alternative can Eclipse be used, try using the latest version.
+You will be required to import the .java filer into a project, compile and then execute it.
+
+A computer with a operation system such as Windows.
+Windows XP or higher (Vista, 7, 8, 8.1) is recommended to use.
+Windows 8.1. was used for development for the exercise.
+Your computer only needs to be able to run smoothly inside desktop environment.
+The program will most likely not make any impact at all on your computer preformance.
+No specs are given required to run the program, as the required specs are extremly low.
+
+A keyboard is required for giving input in the text based interface of the program.

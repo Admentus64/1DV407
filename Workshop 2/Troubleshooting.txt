@@ -1,0 +1,71 @@
+----------------------------------------------------------
+--- If Java is not recognized on your Windows computer ---
+----------------------------------------------------------
+
+a) Check if the Java Development Kit 8 (JDK8) is installed on your PC.
+
+b) If so, Java needs to be added to your PC environment variables, please read further.
+
+
+
+-------------------------------------------------------------------
+--- How to check if Java is recognized on your Windows computer ---
+-------------------------------------------------------------------
+
+1) Open your search bar (Windows 7 and earlier, go to start menu and select the typing bar).
+
+2) Type "cmd.exe" and press enter.
+
+3) A new window console opens, type: "java".
+
+If a load of new commands appear in the CMD window, then Java is most likely installed.
+In case Java is not recognized, CMD will print out the following message:
+"'java' is not recognized as an internal or external command, operable program or batch file.".
+In that case, please read on.
+
+
+
+---------------------------------------------------------------------------------
+--- How to add JDK8 to your PC environment variables on your Windows computer ---
+---------------------------------------------------------------------------------
+
+WARNING: Do not try this on any system other than Windows. Please consolt google.com in that case.
+
+1a) Right-click on "This PC" (Windows 8.1) or "Computer" (earlier) and right-click on "Properties".
+
+1b) Alternative, enter your computer folder and right-click on "Properties"
+
+2) Current location would be "Control Panel/System and Security/System", click on "Advanced System Settings".
+
+3) A new window pops up: "System Properties", click on "Environment Variables".
+
+4) A new window pops up: "Environment Variables" at the "Advanced" tab. Look for the subtab "System Variables" (not the subtab: "User Variables for UserName").
+
+5) A scrollable list of variables appears, look for the Variable item "Path".
+
+6) Click on "Edit"
+
+-------------------------
+--- IMPORTANT WARNING ---
+-------------------------
+
+DO NOT REMOVE OR CHANGE ANY OF THE EXISTING TEXT. YOU ARE SOLELY RESPONSIBLE FOR ANY CHANGES YOU MAKE. IF NOT CAREFULL YOU COULD BREAK YOUR SYSTEM.
+
+However, following my instructions will not harm anything because only new content is added.
+
+
+
+7a) A new window pops up: "Edit System Variable". Place the cursor at the first character space in "Variable Value" bar.
+
+8a) Add the location of your installed JDK8 folder, including the bin folder and a semicolon symbol. For example: "C:\Program Files\Java\jdk1.8.0\bin;". DO NOT FORGET TO END THE SENTENCE WITH A SEMICOLON, neither include the quotation marks.
+
+
+7b) Alternative, place the cursor at the last character space in the "Variable Value" bar.
+
+8) Start with a semicolon system then add the location of your installed JDK8 folder, including the bin folder. For example: ";C:\Program Files\Java\jdk1.8.0\bin". DO NOT FORGET TO START THE SENTENCE WITH A SEMICOLON, neither include the quotation marks.
+
+
+Most importantly, to not remove or change any of the existing lines. Add a new line at the start or end of the variable "Path".
+
+
+9) Press "OK" on all active windows to save it. Done!
