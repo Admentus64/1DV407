@@ -19,20 +19,25 @@ import java.util.Scanner;
  */
 public class RunProgram {     //Class RunProgram starts
     
+    /* Private Variable Fields */
+    private static final String path = "Data/Club.txt";
+    
+    
+    
     /* Main method */
     public static void main(String[] args) throws IOException {    //Method main starts
         
         Scanner scan = new Scanner(System.in);
         Console console = selectLanguage(scan);
         Club club;
-        if (Document.fileExists("Files/Club.txt"))
+        if (Document.fileExists(path))
             club = loadData(console);
         else {
-            Document.createFile("Files/Club.txt");
+            Document.createFile(path);
             club = new Club(console);
         }
         
-        RunClub runClub = new RunClub(console, club);
+        RunClub runClub = new RunClub(path, console, club);
         runClub.activate();
         
     }   //Method main ends
@@ -44,8 +49,8 @@ public class RunProgram {     //Class RunProgram starts
         
         Scanner fileScan = null;
         try {
-            ArrayList<String> memberList = Document.readList(fileScan, "MEMBERS", "Files/Club.txt");
-            ArrayList<String> boatList = Document.readList(fileScan, "BOATS", "Files/Club.txt");
+            ArrayList<String> memberList = Document.readList(fileScan, "MEMBERS", path);
+            ArrayList<String> boatList = Document.readList(fileScan, "BOATS", path);
             ArrayList<Member> members = Document.readMembers(memberList);
             ArrayList<Boat> boats = Document.readBoats(boatList, members);
             return new Club(members, boats, console);

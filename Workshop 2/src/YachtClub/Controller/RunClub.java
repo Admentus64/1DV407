@@ -13,6 +13,7 @@ import java.io.IOException;
 public class RunClub {
     
     /* Private Variable Fields */
+    private final String path;
     private final YachtClub.View.Console console;
     private final YachtClub.Objects.Club club;
     private String input = "";
@@ -20,8 +21,9 @@ public class RunClub {
     
     
     /* Constructors ==> create new instance */
-    public RunClub(YachtClub.View.Console console, YachtClub.Objects.Club club) {   //Constructor starts
+    public RunClub(String path, YachtClub.View.Console console, YachtClub.Objects.Club club) {   //Constructor starts
         
+        this.path = path;
         this.console = console;
         this.club = club;
         
@@ -105,7 +107,7 @@ public class RunClub {
         String lastName = console.getInput();
         String personNumber = console.getInput();
         club.registerMember(firstName, lastName, personNumber);
-        Document.parseIntoTextFile("Files/Club.txt", club.getMembers(), club.getBoats());
+        Document.parseIntoTextFile(path, club.getMembers(), club.getBoats());
         
     }   //Method orderAddMember ends
     
@@ -118,7 +120,7 @@ public class RunClub {
             club.unregisterMember(Integer.parseInt(remove));    //Convert it into an integer
         else club.unregisterMember(remove);                     //Otherwise remove member by person number
         
-        Document.parseIntoTextFile("Files/Club.txt", club.getMembers(), club.getBoats());
+        Document.parseIntoTextFile(path, club.getMembers(), club.getBoats());
         
     }   //Method orderUnregisterMember ends
     
@@ -132,7 +134,7 @@ public class RunClub {
         
         if (isInteger(ID)) {
             club.editMember(0, newFirstName, newLastName, newPersonNumber);
-            Document.parseIntoTextFile("Files/Club.txt", club.getMembers(), club.getBoats());
+            Document.parseIntoTextFile(path, club.getMembers(), club.getBoats());
         }
         else console.showError("input");
         
@@ -146,7 +148,7 @@ public class RunClub {
         
         if (isInteger(length)) {
             club.addBoat(type, Integer.parseInt(length));
-            Document.parseIntoTextFile("Files/Club.txt", club.getMembers(), club.getBoats());
+            Document.parseIntoTextFile(path, club.getMembers(), club.getBoats());
         }
         else console.showError("input"); 
         
@@ -159,7 +161,7 @@ public class RunClub {
         
         if (isInteger(ID)) {
             club.deleteBoat(Integer.parseInt(ID));
-            Document.parseIntoTextFile("Files/Club.txt", club.getMembers(), club.getBoats());
+            Document.parseIntoTextFile(path, club.getMembers(), club.getBoats());
         }
         else console.showError("input");
         
@@ -174,7 +176,7 @@ public class RunClub {
         
         if (isInteger(ID) && isInteger(newLength)) {
             club.editBoat(Integer.parseInt(ID), newType, Integer.parseInt(newLength));
-            Document.parseIntoTextFile("Files/Club.txt", club.getMembers(), club.getBoats());
+            Document.parseIntoTextFile(path, club.getMembers(), club.getBoats());
         }
         else console.showError("input");
         
@@ -195,7 +197,7 @@ public class RunClub {
                 }
             if (member != null) {
                 club.assign(Integer.parseInt(ID), member);
-                Document.parseIntoTextFile("Files/Club.txt", club.getMembers(), club.getBoats());
+                Document.parseIntoTextFile(path, club.getMembers(), club.getBoats());
             }
             else console.showError("member does not exist");
         }
@@ -210,7 +212,7 @@ public class RunClub {
         
         if (isInteger(ID)) {
             club.unassign(Integer.parseInt(ID));
-            Document.parseIntoTextFile("Files/Club.txt", club.getMembers(), club.getBoats());
+            Document.parseIntoTextFile(path, club.getMembers(), club.getBoats());
         }
         else console.showError("input");
         
