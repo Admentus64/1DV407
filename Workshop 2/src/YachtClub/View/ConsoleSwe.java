@@ -97,6 +97,12 @@ public class ConsoleSwe extends Console { //Class ConsoleSwe starts
             case "number":
                 System.err.println("Personnumber already exists for a member. Avbryta order, försök igen gärna.");
                 break;
+            case "negative ID":
+                System.err.println("ID får inte har ett negativt värde. Avbryta order, försök igen gärna.");
+                break;
+            case "not-positive length":
+                System.err.println("Längden av båten krävs ett positivt värde. Avbryta order, försök igen gärna.");
+                break;
             default:
                 System.err.println("Okänd fel. Avbryta order, försök igen gärna.");
         }

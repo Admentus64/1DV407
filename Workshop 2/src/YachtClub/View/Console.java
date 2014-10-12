@@ -42,14 +42,6 @@ public abstract class Console implements ConsoleListener {      //Abstract class
     
     /* Accessors ==> read object states */
     @Override
-    public String getInput() {  //Method getInput starts
-        
-        setInput();
-        return input;
-        
-    }   //Method getInput ends
-    
-    @Override
     public boolean isActive() {     //Method isActive starts
         
         if (input.equals("q") || input.equals("Q"))
@@ -62,7 +54,7 @@ public abstract class Console implements ConsoleListener {      //Abstract class
     
     /* Mutators ==> update object states */
     @Override
-    public void setInput() {    //Method setInput starts
+    public String setInput() {  //Method getInput starts
         
         input = "";
         try { input = scan.next(); }
@@ -70,9 +62,9 @@ public abstract class Console implements ConsoleListener {      //Abstract class
             System.err.println("Error with input! Exception: " + e);
             quit();
         }
+        return input;
         
-    }   //Method setInput ends
-    
+    }   //Method getInput ends
     
     
     /* Private help methods */

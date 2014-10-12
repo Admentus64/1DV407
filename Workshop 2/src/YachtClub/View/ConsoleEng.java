@@ -97,6 +97,12 @@ public class ConsoleEng extends Console { //Class ConsoleEng starts
             case "number":
                 System.err.println("Personnumber already exists for a member. Abort order, retry please.");
                 break;
+            case "negative ID":
+                System.err.println("ID can not be a negative value. Abort order, retry please.");
+                break;
+            case "not-positive length":
+                System.err.println("Boat length must have a postive value. Abort order, retry please.");
+                break;
             default:
                 System.err.println("Unknown error. Abort order, retry please.");
         }

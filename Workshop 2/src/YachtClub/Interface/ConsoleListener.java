@@ -19,8 +19,7 @@ public interface ConsoleListener {  //Interface ConsoleListener starts
     public abstract String print(String object);                                //Abstract method print
     
     /* Other methods */
-    public String getInput();       //Method getInput
+    public String setInput();       //Method getInput
     public boolean isActive();      //Method isActive
-    public void setInput();         //Method setInput
     
 }   //Interface ConsoleListener ends

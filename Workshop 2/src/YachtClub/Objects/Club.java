@@ -37,6 +37,8 @@ public class Club  implements ClubListener  {     //Class Club starts
         
     }   //Full constructor ends
     
+    
+    
     /* Accessors ==> read object states */
     @Override   public ArrayList<Member> getMembers()   { return members; }     //Method getMembers
     @Override   public ArrayList<Boat> getBoats()       { return boats; }       //Method getBoats
@@ -54,6 +56,9 @@ public class Club  implements ClubListener  {     //Class Club starts
     @Override
     public Member getMember(int ID) {   //Method getMember starts (uses ID)
         
+        if (isNegativeID(ID))
+            return null;
+        
         for (Member member : members)
             if (member.getID() == ID)
                 return member;
@@ -63,6 +68,9 @@ public class Club  implements ClubListener  {     //Class Club starts
     
     @Override
     public Boat getBoat(int ID) {   //Method getBoat starts
+        
+        if (isNegativeID(ID))
+            return null;
         
         for (Boat boat : boats)
             if (boat.getID() == ID)
@@ -79,6 +87,7 @@ public class Club  implements ClubListener  {     //Class Club starts
         
         if (personNumberExists(personNumber))
             return;
+        
         members.add(new Member(firstName, lastName, personNumber));
         
     }   //Method registerMember ends
@@ -99,6 +108,9 @@ public class Club  implements ClubListener  {     //Class Club starts
     @Override
     public void unregisterMember(int ID) {  //Method unregisterMember starts (uses ID)
         
+        if (isNegativeID(ID))
+            return;
+        
         for (int i=0; i<members.size(); i++)
             if (members.get(i).getID() == ID) {
                 removeRegisteredBoat(members.get(i));
@@ -112,7 +124,7 @@ public class Club  implements ClubListener  {     //Class Club starts
     @Override
     public void editMember(int ID, String firstName, String lastName, String personNumber) {  //Method editMember starts
         
-        if (personNumberExists(personNumber))
+        if (isNegativeID(ID) || personNumberExists(personNumber))
             return;
         
         for (Member member : members)
@@ -134,11 +146,19 @@ public class Club  implements ClubListener  {     //Class Club starts
     
     @Override
     public void addBoat(String type, int length) {  //Method addBoat starts
+        
+        if (isNotPositiveLength(length))
+            return;
+        
         boats.add(new Boat(type, length));
+        
     }   //Method addBoat ends
 
     @Override
     public void deleteBoat(int ID) {    //Method deleteBoat starts
+        
+        if (isNegativeID(ID))
+            return;
         
         for (int i=0; i<boats.size(); i++)
             if (boats.get(i).getID() == ID) {
@@ -151,6 +171,9 @@ public class Club  implements ClubListener  {     //Class Club starts
 
     @Override
     public void editBoat(int ID, String type, int length) {     //Method editBoat starts
+        
+        if (isNegativeID(ID) || isNotPositiveLength(length))
+            return;
         
         for (Boat boat : boats)
             if (boat.getID() == ID) {
@@ -166,6 +189,9 @@ public class Club  implements ClubListener  {     //Class Club starts
     /* Other methods */
     @Override
     public void assign(int ID, Member member) {     //Method assign starts
+        
+        if (isNegativeID(ID))
+            return;
         
         for (Boat boat : boats)
             if (boat.getID() == ID) {
@@ -185,6 +211,9 @@ public class Club  implements ClubListener  {     //Class Club starts
     
     @Override
     public void unassign(int ID) {  //Method unassign starts
+        
+        if (isNegativeID(ID))
+            return;
         
         for (Boat boat : boats)
             if (boat.getID() == ID) {
@@ -283,5 +312,25 @@ public class Club  implements ClubListener  {     //Class Club starts
         return false;
         
     }   //Method personNumberExists ends
+    
+    private boolean isNegativeID(int i)  {    //Method isNegativeID starts
+        
+        if (i < 0) {
+            console.showError("negative ID");
+            return true;
+        }
+        return false;
+        
+    }   //Method isNegativeID ends
+    
+    private boolean isNotPositiveLength(int i)  {    //Method isNotPositiveLength starts
+        
+        if (i < 1) {
+            console.showError("not-positive length");
+            return true;
+        }
+        return false;
+        
+    }   //Method isNotPositiveLength ends
     
 }   //Class Club ends

@@ -37,8 +37,8 @@ public class RunClub {
         console.presentWelcomeMessage();
         while (console.isActive()) {
             console.presentInstructions();
-            try { checkOrder(console.getInput()); }
-            catch (IOException e) { console.showError("write"); }
+            try                     { checkOrder(console.setInput()); }
+            catch (IOException e)   { console.showError("input"); }
         }
     
     }   //Method active ends
@@ -101,9 +101,9 @@ public class RunClub {
     public void orderRegisterMember() throws IOException {   //Method orderAddMember starts
         
         console.showOrderInstructions("Register Member");
-        String firstName = console.getInput();
-        String lastName = console.getInput();
-        String personNumber = console.getInput();
+        String firstName = console.setInput();
+        String lastName = console.setInput();
+        String personNumber = console.setInput();
         club.registerMember(firstName, lastName, personNumber);
         Document.parseIntoTextFile(filePath, club.getMembers(), club.getBoats());
         
@@ -112,7 +112,7 @@ public class RunClub {
     public void orderUnregisterMember() throws IOException {    //Method orderUnregisterMember starts
         
         console.showOrderInstructions("Unregister Member");
-        String remove = console.getInput();
+        String remove = console.setInput();
         
         if (isInteger(remove))                                  //Check if input is an integer value for ID
             club.unregisterMember(Integer.parseInt(remove));    //Convert it into an integer
@@ -125,10 +125,10 @@ public class RunClub {
     public void orderEditMember() throws IOException {  //Method orderEditMember starts
         
         console.showOrderInstructions("Edit Member");
-        String ID = console.getInput();
-        String newFirstName = console.getInput();
-        String newLastName = console.getInput();
-        String newPersonNumber = console.getInput();
+        String ID = console.setInput();
+        String newFirstName = console.setInput();
+        String newLastName = console.setInput();
+        String newPersonNumber = console.setInput();
         
         if (isInteger(ID)) {
             club.editMember(0, newFirstName, newLastName, newPersonNumber);
@@ -141,8 +141,8 @@ public class RunClub {
     public void orderAddBoat() throws IOException {     //Method addBoat starts
         
         console.showOrderInstructions("Add Boat");
-        String type = console.getInput();
-        String length = console.getInput();
+        String type = console.setInput();
+        String length = console.setInput();
         
         if (isInteger(length)) {
             club.addBoat(type, Integer.parseInt(length));
@@ -155,7 +155,7 @@ public class RunClub {
     public void orderDeleteBoat() throws IOException {  //Method orderDeleteBoat starts
         
         console.showOrderInstructions("Delete Boat");
-        String ID = console.getInput();
+        String ID = console.setInput();
         
         if (isInteger(ID)) {
             club.deleteBoat(Integer.parseInt(ID));
@@ -168,9 +168,9 @@ public class RunClub {
     public void orderEditBoat() throws IOException {    //Method orderEditBoat starts
         
         console.showOrderInstructions("Edit Boat");
-        String ID = console.getInput();
-        String newType = console.getInput();
-        String newLength = console.getInput();
+        String ID = console.setInput();
+        String newType = console.setInput();
+        String newLength = console.setInput();
         
         if (isInteger(ID) && isInteger(newLength)) {
             club.editBoat(Integer.parseInt(ID), newType, Integer.parseInt(newLength));
@@ -183,8 +183,8 @@ public class RunClub {
     public void orderAssignBoat() throws IOException {  //Method orderAssignBoat starts
         
         console.showOrderInstructions("Assign Boat");
-        String ID = console.getInput();
-        String personNumber = console.getInput();
+        String ID = console.setInput();
+        String personNumber = console.setInput();
         
         if (isInteger(ID)) {
             Member member = null;
@@ -206,7 +206,7 @@ public class RunClub {
     public void orderUnassignBoat() throws IOException {    //Method orderUnassignBoat starts
         
         console.showOrderInstructions("Unassign Boat");
-        String ID = console.getInput();
+        String ID = console.setInput();
         
         if (isInteger(ID)) {
             club.unassign(Integer.parseInt(ID));
