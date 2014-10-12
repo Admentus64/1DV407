@@ -20,7 +20,7 @@ import java.util.Scanner;
 public class RunProgram {     //Class RunProgram starts
     
     /* Private Variable Fields */
-    private static final String path = "Data/Club.txt";
+    private static final String filePath = "Data/Club.txt";
     
     
     
@@ -30,14 +30,14 @@ public class RunProgram {     //Class RunProgram starts
         Scanner scan = new Scanner(System.in);
         Console console = selectLanguage(scan);
         Club club;
-        if (Document.fileExists(path))
+        if (Document.fileExists(filePath))
             club = loadData(console);
         else {
-            Document.createFile(path);
+            Document.createFile(filePath);
             club = new Club(console);
         }
         
-        RunClub runClub = new RunClub(path, console, club);
+        RunClub runClub = new RunClub(filePath, console, club);
         runClub.activate();
         
     }   //Method main ends
@@ -49,8 +49,8 @@ public class RunProgram {     //Class RunProgram starts
         
         Scanner fileScan = null;
         try {
-            ArrayList<String> memberList = Document.readList(fileScan, "MEMBERS", path);
-            ArrayList<String> boatList = Document.readList(fileScan, "BOATS", path);
+            ArrayList<String> memberList = Document.readList(fileScan, "MEMBERS", filePath);
+            ArrayList<String> boatList = Document.readList(fileScan, "BOATS", filePath);
             ArrayList<Member> members = Document.readMembers(memberList);
             ArrayList<Boat> boats = Document.readBoats(boatList, members);
             return new Club(members, boats, console);
