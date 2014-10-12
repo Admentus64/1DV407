@@ -16,7 +16,6 @@ public class RunClub {
     private final String path;
     private final YachtClub.View.Console console;
     private final YachtClub.Objects.Club club;
-    private String input = "";
     
     
     
@@ -38,14 +37,13 @@ public class RunClub {
         console.presentWelcomeMessage();
         while (console.isActive()) {
             console.presentInstructions();
-            input = console.getInput();
-            try { checkOrder(); }
+            try { checkOrder(console.getInput()); }
             catch (IOException e) { console.showError("write"); }
         }
     
     }   //Method active ends
     
-    public void checkOrder() throws IOException {   //Method checkOrder starts
+    public void checkOrder(String input) throws IOException {   //Method checkOrder starts
         
         switch (input) {
             case "1":
