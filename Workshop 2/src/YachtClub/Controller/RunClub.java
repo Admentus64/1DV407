@@ -37,7 +37,12 @@ public class RunClub {
         console.presentWelcomeMessage();
         while (console.isActive()) {
             console.presentInstructions();
-            try                     { checkOrder(console.setInput()); }
+            try {
+                checkOrder(console.setLineInput());
+                if (console.getInput().equals("9") || console.getInput().equals("10"))
+                    clearConsole(1);
+                else clearConsole(5);
+            }
             catch (IOException e)   { console.showError("input"); }
         }
     
@@ -82,7 +87,14 @@ public class RunClub {
     
     
     /* Private help methods */
-    private boolean isInteger(String string) {
+    private void clearConsole(int lines) {   //Method clearConsole starts
+        
+        for (int i=0; i<lines; i++)
+            System.out.println();
+        
+    }   //Method clearConsole ends
+    
+    private boolean isInteger(String string) {  //Method isInteger starts
         
         try {
             Integer.valueOf(string);
@@ -90,7 +102,7 @@ public class RunClub {
         }
         catch (NumberFormatException e) { return false; }
     
-    }
+    }   //Method isInteger ends
     
     
     
@@ -100,10 +112,15 @@ public class RunClub {
     
     public void orderRegisterMember() throws IOException {   //Method orderAddMember starts
         
-        console.showOrderInstructions("Register Member");
-        String firstName = console.setInput();
-        String lastName = console.setInput();
-        String personNumber = console.setInput();
+        console.showOrderInstructions("First Name");
+        String firstName = console.setLineInput();
+        
+        console.showOrderInstructions("Last Name");
+        String lastName = console.setLineInput();
+        
+        console.showOrderInstructions("Person Number");
+        String personNumber = console.setLineInput();
+        
         club.registerMember(firstName, lastName, personNumber);
         Document.parseIntoTextFile(filePath, club.getMembers(), club.getBoats());
         
@@ -111,12 +128,21 @@ public class RunClub {
     
     public void orderUnregisterMember() throws IOException {    //Method orderUnregisterMember starts
         
-        console.showOrderInstructions("Unregister Member");
-        String remove = console.setInput();
+        if (club.getMembers().isEmpty()) {
+            console.showError("no members");
+            return;
+        } 
         
+        console.showOrderInstructions("Member ID / Person Number");
+        String remove = console.setLineInput();
+        
+        int sizeMembers = club.getMembers().size();
         if (isInteger(remove))                                  //Check if input is an integer value for ID
             club.unregisterMember(Integer.parseInt(remove));    //Convert it into an integer
-        else club.unregisterMember(remove);                     //Otherwise remove member by person number
+        if (sizeMembers == club.getMembers().size())
+            club.unregisterMember(remove);                     //Otherwise remove member by person number
+        if (sizeMembers == club.getMembers().size())
+            console.showError("member does not exist");
         
         Document.parseIntoTextFile(filePath, club.getMembers(), club.getBoats());
         
@@ -124,11 +150,22 @@ public class RunClub {
     
     public void orderEditMember() throws IOException {  //Method orderEditMember starts
         
-        console.showOrderInstructions("Edit Member");
-        String ID = console.setInput();
-        String newFirstName = console.setInput();
-        String newLastName = console.setInput();
-        String newPersonNumber = console.setInput();
+        if (club.getMembers().isEmpty()) {
+            console.showError("no members");
+            return;
+        } 
+        
+        console.showOrderInstructions("Member ID");
+        String ID = console.setLineInput();
+        
+        console.showOrderInstructions("First Name");
+        String newFirstName = console.setLineInput();
+        
+        console.showOrderInstructions("Last Name");
+        String newLastName = console.setLineInput();
+        
+        console.showOrderInstructions("Person Number");
+        String newPersonNumber = console.setLineInput();
         
         if (isInteger(ID)) {
             club.editMember(0, newFirstName, newLastName, newPersonNumber);
@@ -140,9 +177,11 @@ public class RunClub {
     
     public void orderAddBoat() throws IOException {     //Method addBoat starts
         
-        console.showOrderInstructions("Add Boat");
-        String type = console.setInput();
-        String length = console.setInput();
+        console.showOrderInstructions("Type");
+        String type = console.setLineInput();
+        
+        console.showOrderInstructions("Length");
+        String length = console.setLineInput();
         
         if (isInteger(length)) {
             club.addBoat(type, Integer.parseInt(length));
@@ -154,8 +193,13 @@ public class RunClub {
     
     public void orderDeleteBoat() throws IOException {  //Method orderDeleteBoat starts
         
-        console.showOrderInstructions("Delete Boat");
-        String ID = console.setInput();
+        if (club.getBoats().isEmpty()) {
+            console.showError("no boats");
+            return;
+        } 
+        
+        console.showOrderInstructions("Boat ID");
+        String ID = console.setLineInput();
         
         if (isInteger(ID)) {
             club.deleteBoat(Integer.parseInt(ID));
@@ -167,10 +211,19 @@ public class RunClub {
     
     public void orderEditBoat() throws IOException {    //Method orderEditBoat starts
         
-        console.showOrderInstructions("Edit Boat");
-        String ID = console.setInput();
-        String newType = console.setInput();
-        String newLength = console.setInput();
+        if (club.getBoats().isEmpty()) {
+            console.showError("no boats");
+            return;
+        } 
+        
+        console.showOrderInstructions("Boat ID");
+        String ID = console.setLineInput();
+        
+        console.showOrderInstructions("Type");
+        String newType = console.setLineInput();
+        
+        console.showOrderInstructions("Length");
+        String newLength = console.setLineInput();
         
         if (isInteger(ID) && isInteger(newLength)) {
             club.editBoat(Integer.parseInt(ID), newType, Integer.parseInt(newLength));
@@ -182,9 +235,20 @@ public class RunClub {
     
     public void orderAssignBoat() throws IOException {  //Method orderAssignBoat starts
         
-        console.showOrderInstructions("Assign Boat");
-        String ID = console.setInput();
-        String personNumber = console.setInput();
+        if (club.getBoats().isEmpty()) {
+            console.showError("no boats");
+            return;
+        }
+        if (club.getMembers().isEmpty()) {
+            console.showError("no members");
+            return;
+        }
+        
+        console.showOrderInstructions("Boat ID");
+        String ID = console.setLineInput();
+        
+        console.showOrderInstructions("Member ID");
+        String personNumber = console.setLineInput();
         
         if (isInteger(ID)) {
             Member member = null;
@@ -205,8 +269,13 @@ public class RunClub {
     
     public void orderUnassignBoat() throws IOException {    //Method orderUnassignBoat starts
         
-        console.showOrderInstructions("Unassign Boat");
-        String ID = console.setInput();
+        if (club.getBoats().isEmpty()) {
+            console.showError("no boats");
+            return;
+        }
+        
+        console.showOrderInstructions("Boat ID");
+        String ID = console.setLineInput();
         
         if (isInteger(ID)) {
             club.unassign(Integer.parseInt(ID));

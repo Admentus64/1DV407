@@ -101,7 +101,6 @@ public class Club  implements ClubListener  {     //Class Club starts
                 members.remove(i);
                 return;
             }
-        console.showError("member does not exist");
         
     }   //Method unregisterMember starts
 
@@ -117,7 +116,6 @@ public class Club  implements ClubListener  {     //Class Club starts
                 members.remove(i);
                 return;
             }
-        console.showError("member does not exist");
         
     }   //Method unregisterMember ends
 

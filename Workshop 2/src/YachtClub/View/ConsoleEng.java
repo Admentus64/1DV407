@@ -36,32 +36,32 @@ public class ConsoleEng extends Console { //Class ConsoleEng starts
     public void showOrderInstructions(String order) {   //Method showOrderInstructions starts
         
         switch (order) {
-            case "Register Member":
-                System.out.print("(1) Enter name (first + last) + person number (use space with next command): ");
+            case "First Name":
+                System.out.print("Enter first name: ");
                 break;
-            case "Unregister Member":
-                System.out.print("(2) Enter person number or ID:  ");
+            case "Last Name":
+                System.out.print("Enter last name: ");
                 break;
-            case "Edit Member":
-                System.out.print("(3) Enter ID + new name (first + last) + new personnumber (use space with next command): ");
+            case "Person Number":
+                System.out.print("Enter person number: ");
                 break;
-            case "Add Boat":
-                System.out.print("(4) Enter type + length in cm (use space with next command): ");
+            case "Type":
+                System.out.print("Enter type: ");
                 break;
-            case "Delete Boat":
-                System.out.print("(5) Enter ID: ");
+            case "Length":
+                System.out.print("Enter length in cm: ");
                 break;
-            case "Edit Boat":
-                System.out.print("(6) Enter ID + new type + new length in cm (use space with next command): ");
+            case "Member ID":
+                System.out.print("Enter member ID: ");
                 break;
-            case "Assign Boat":
-                System.out.print("(7) Enter boat ID + person number (use space with next command): ");
+            case "Boat ID":
+                System.out.print("Enter boat ID: ");
                 break;
-            case "Unassign Boat":
-                System.out.print("(8) Enter boat ID: ");
+            case "Member ID / Person Number":
+                System.out.print("Enter member ID or person number: ");
                 break;
             default:
-                System.out.print("(?) Unknown order: ");
+                System.out.print("Unknown order: ");
         }
         
     }   //Method showOrderInstructions ends
@@ -102,6 +102,12 @@ public class ConsoleEng extends Console { //Class ConsoleEng starts
                 break;
             case "not-positive length":
                 System.err.println("Boat length must have a postive value. Abort order, retry please.");
+                break;
+            case "no members":
+                System.err.println("No members are registered. Abort order, retry please.");
+                break;
+            case "no boats":
+                System.err.println("No boats are registered. Abort order, retry please.");
                 break;
             default:
                 System.err.println("Unknown error. Abort order, retry please.");

@@ -11,6 +11,8 @@ import YachtClub.View.Console;
 import YachtClub.View.ConsoleEng;
 import YachtClub.View.ConsoleSwe;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -27,6 +29,7 @@ public class RunProgram {     //Class RunProgram starts
     /* Main method */
     public static void main(String[] args) throws IOException {    //Method main starts
         
+        //Scanner scan = new Scanner(System.in);
         Scanner scan = new Scanner(System.in);
         Console console = selectLanguage(scan);
         Club club;

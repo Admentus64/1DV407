@@ -41,6 +41,8 @@ public abstract class Console implements ConsoleListener {      //Abstract class
     
     
     /* Accessors ==> read object states */
+    @Override   public String getInput() { return input; }  //Method getInput
+    
     @Override
     public boolean isActive() {     //Method isActive starts
         
@@ -65,6 +67,20 @@ public abstract class Console implements ConsoleListener {      //Abstract class
         return input;
         
     }   //Method getInput ends
+    
+    @Override
+    public String setLineInput() {  //Method getLineInput starts
+        
+        input = "";
+        try { input = scan.nextLine(); }
+        catch (Exception e) {
+            System.err.println("Error with input! Exception: " + e);
+            quit();
+        }
+        return input;
+        
+    }   //Method getLineInput ends
+    
     
     
     /* Private help methods */

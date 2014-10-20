@@ -36,32 +36,32 @@ public class ConsoleSwe extends Console { //Class ConsoleSwe starts
     public void showOrderInstructions(String order) {   //Method showOrderInstructions starts
         
         switch (order) {
-            case "Register Member":
-                System.out.print("(1) Ange namn (för + efter) + personnummer (använd mellanrum varje kommando): ");
+            case "First Name":
+                System.out.print("Ange förnamn: ");
                 break;
-            case "Unregister Member":
-                System.out.print("(2) Ange personnummer eller ID:  ");
+            case "Last Name":
+                System.out.print("Ange efternamn: ");
                 break;
-            case "Edit Member":
-                System.out.print("(3) Ange ID + ny namn (för + efter) + ny personnummer (använd mellanrum varje kommando): ");
+            case "Person Number":
+                System.out.print("Ange personnummer: ");
                 break;
-            case "Add Boat":
-                System.out.print("(4) Ange typ + längd i cm (använd mellanrum varje kommando): ");
+            case "Type":
+                System.out.print("Ange typ: ");
                 break;
-            case "Delete Boat":
-                System.out.print("(5) Ange ID: ");
+            case "Length":
+                System.out.print("Ange längd i cm: ");
                 break;
-            case "Edit Boat":
-                System.out.print("(6) Ange ID + ny typ + ny längd i cm (använd mellanrum varje kommando): ");
+            case "Member ID":
+                System.out.print("Ange medlem ID: ");
                 break;
-            case "Assign Boat":
-                System.out.print("(7) Ange båt ID + personnummer (använd mellanrum varje kommando): ");
+            case "Boat ID":
+                System.out.print("Ange båt ID: ");
                 break;
-            case "Unassign Boat":
-                System.out.print("(8) Ange båt ID: ");
+            case "Member ID / Person Number":
+                System.out.print("Ange medlem ID eller personnummer: ");
                 break;
             default:
-                System.out.print("(?) Okänd order: ");
+                System.out.print("Okänd order: ");
         }
         
     }   //Method showOrderInstructions ends
@@ -102,6 +102,12 @@ public class ConsoleSwe extends Console { //Class ConsoleSwe starts
                 break;
             case "not-positive length":
                 System.err.println("Längden av båten krävs ett positivt värde. Avbryta order, försök igen gärna.");
+                break;
+            case "no members":
+                System.err.println("Inga medlemmar finns. Avbryta order, försök igen gärna.");
+                break;
+            case "no boats":
+                System.err.println("Inga båtar finns. Avbryta order, försök igen gärna.");
                 break;
             default:
                 System.err.println("Okänd fel. Avbryta order, försök igen gärna.");
