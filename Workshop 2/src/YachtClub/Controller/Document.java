@@ -52,13 +52,14 @@ public class Document {
             
             line = line.substring(Integer.toString(length).length()+1);
             String memberNumber = line.substring(0);
+            if (memberNumber.equals("null"))
+                memberNumber = null;
             
             output.add(new Boat(type, length));
-            if (!memberNumber.equals("null"))
+            if (memberNumber != null)
                 for (Member member : members)
                     if (member.getPersonNumber().equals(memberNumber)) {
-                        output.get(output.size()-1).assign(member);
-                        member.addBoat();
+                        output.get(output.size()-1).assign(member.getPersonNumber());
                         break;
                     }
             
@@ -66,6 +67,23 @@ public class Document {
         return output;
         
     }   //Method readBoats ends
+    
+    public static ArrayList<Member> addBoatsToMember(ArrayList<Member> members, ArrayList<Boat> boats) {    //Method addBoatsToMember starts
+        
+        ArrayList<Member> output = members;
+        
+        if (members.isEmpty() || boats.isEmpty())
+            return output;
+        
+        boats.stream().forEach((Boat boat) -> {
+            for (int i=0; i<members.size(); i++)
+                if (boat.hasMember())
+                    if (boat.getMemberNumber().equals(members.get(i).getPersonNumber()))
+                        output.get(i).addBoat(boat);
+        });
+        return output;
+        
+    }   //Method addBoatsToMember ends
     
     public static ArrayList<String> readList(Scanner fileScan, String check, String path) throws IOException {  //Static method readList starts
         

@@ -14,7 +14,7 @@ public class Boat implements BoatListener {     //Class Boat starts
     /* Private Variable Fields */
     private String type = "";
     private int length = 0;
-    private Member member = null;
+    private String linkedNumber = null;
     private static int count = 0;
     private final int ID;
     
@@ -36,9 +36,8 @@ public class Boat implements BoatListener {     //Class Boat starts
     @Override   public String getType()             { return type; }                        //Method getType
     @Override   public int getLength()              { return length; }                      //Method getLength
     @Override   public int getID()                  { return ID; }                          //Method getID
-    @Override   public Member getMember()           { return member; }                      //Method getMember
-    @Override   public String getMemberNumber()     { return member.getPersonNumber(); }    //Method getMemberNumber
-    @Override   public boolean hasMember()          { return member != null; }              //Method hasMember
+    @Override   public String getMemberNumber()     { return linkedNumber; }                //Method getMemberNumber
+    @Override   public boolean hasMember()          { return linkedNumber != null; }        //Method hasMember
     
     
     
@@ -65,18 +64,18 @@ public class Boat implements BoatListener {     //Class Boat starts
     
     /* Other methods */
     @Override
-    public void assign(Member member) {     //Method assign starts
+    public void assign(String memberNumber) {     //Method assign starts
         
-        if (this.member == null)
-            this.member = member;
+        if (linkedNumber == null)
+            linkedNumber = memberNumber;
         
     }   //Method assign ends
     
     @Override
     public void unassign() {    //Method unassign starts
         
-        if (member != null)
-            member = null;
+        if (linkedNumber != null)
+            linkedNumber = null;
         
     }   //Method unassign ends
     

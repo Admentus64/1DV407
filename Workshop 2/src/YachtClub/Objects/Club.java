@@ -133,7 +133,7 @@ public class Club  implements ClubListener  {     //Class Club starts
                     if (boat.hasMember())
                         if (boat.getMemberNumber().equals(oldNumber)) {
                             boat.unassign();
-                            boat.assign(member);
+                            boat.assign(member.getPersonNumber());
                             return;
                         }
                 return;
@@ -193,9 +193,9 @@ public class Club  implements ClubListener  {     //Class Club starts
         
         for (Boat boat : boats)
             if (boat.getID() == ID) {
-                if (boat.getMember() == null) {
-                    boat.assign(member);
-                    member.addBoat();
+                if (!boat.hasMember()) {
+                    member.addBoat(boat);
+                    boat.assign(member.getPersonNumber());
                     return;
                 }
                 else {
@@ -215,10 +215,13 @@ public class Club  implements ClubListener  {     //Class Club starts
         
         for (Boat boat : boats)
             if (boat.getID() == ID) {
-                if (boat.getMember() != null) {
-                    boat.getMember().removeBoat();
-                    boat.unassign();
-                    return;
+                if (boat.hasMember()) {
+                    for (Member member : members)
+                        if (member.getPersonNumber().equals(boat.getMemberNumber())) {
+                            member.removeBoat(boat);
+                            boat.unassign();
+                            return;
+                        }
                 }
                 else {
                     console.showError("unassign");

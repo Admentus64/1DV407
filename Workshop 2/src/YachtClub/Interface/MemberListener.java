@@ -5,6 +5,8 @@
  */
 package YachtClub.Interface;
 
+import YachtClub.Objects.Boat;
+
 /*
  * More Info Here!
  */
@@ -20,8 +22,7 @@ public interface MemberListener {    //Interface MemberListener starts
     public void setName(String a, String b);            //Method setName
     public void setPersonNumber(String a);              //Method setPersonNumber
     
-    public void setBoats(int i);            //Method setBoats
-    public void addBoat();                  //Method addBoat
-    public void removeBoat();               //Method removeBoat
+    public void addBoat(Boat boat);                  //Method addBoat
+    public void removeBoat(Boat boat);               //Method removeBoat
     
 }   //Interface MemberListener starts

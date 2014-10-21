@@ -247,23 +247,26 @@ public class RunClub {
         console.showOrderInstructions("Boat ID");
         String ID = console.setLineInput();
         
-        console.showOrderInstructions("Member ID");
-        String personNumber = console.setLineInput();
+        console.showOrderInstructions("Member ID / Person Number");
+        String assign = console.setLineInput();
         
-        if (isInteger(ID)) {
-            Member member = null;
-            for (int i=0; i<club.getMembers().size(); i++)
-                if (club.getMembers().get(i).getPersonNumber().equals(personNumber)) {
-                    member = club.getMembers().get(i);
-                    break;
-                }
-            if (member != null) {
-                club.assign(Integer.parseInt(ID), member);
-                Document.parseIntoTextFile(filePath, club.getMembers(), club.getBoats());
+        Member member = null;
+        for (int i=0; i<club.getMembers().size(); i++) {
+            if (isInteger(assign)) {
+                member = club.getMembers().get(i);
+                break;
             }
-            else console.showError("member does not exist");
+            else if (club.getMembers().get(i).getPersonNumber().equals(assign)) {
+                member = club.getMembers().get(i);
+                break;
+            }
         }
-        else console.showError("input");
+        
+        if (member != null) {
+            club.assign(Integer.parseInt(ID), member);
+            Document.parseIntoTextFile(filePath, club.getMembers(), club.getBoats());
+        }
+        else console.showError("member does not exist");
         
     }   //Method orderAssignBoat ends
     

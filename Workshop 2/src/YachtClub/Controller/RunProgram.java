@@ -11,8 +11,6 @@ import YachtClub.View.Console;
 import YachtClub.View.ConsoleEng;
 import YachtClub.View.ConsoleSwe;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -56,6 +54,7 @@ public class RunProgram {     //Class RunProgram starts
             ArrayList<String> boatList = Document.readList(fileScan, "BOATS", filePath);
             ArrayList<Member> members = Document.readMembers(memberList);
             ArrayList<Boat> boats = Document.readBoats(boatList, members);
+            members = Document.addBoatsToMember(members, boats);
             return new Club(members, boats, console);
         }
         catch(Exception e) {

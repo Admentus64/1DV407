@@ -5,6 +5,7 @@
  */
 package YachtClub.Objects;
 import YachtClub.Interface.MemberListener;
+import java.util.ArrayList;
 
 /*
  * More Info Here!
@@ -15,7 +16,7 @@ public class Member implements MemberListener  {   //Class Member starts
     private String firstName = "";
     private String lastName = "";
     private String personNumber = "";
-    private int boats = 0;
+    private final ArrayList<Boat> boats;
     private static int count = 0;
     private final int ID;
     
@@ -27,6 +28,7 @@ public class Member implements MemberListener  {   //Class Member starts
         this.firstName = firstName;
         this.lastName = lastName;
         this.personNumber = personNumber;
+        boats = new ArrayList<>();
         ID = count++;
         
     }   //Constructor ends
@@ -38,12 +40,12 @@ public class Member implements MemberListener  {   //Class Member starts
     @Override   public String getLastName()             { return lastName; }        //Method getFirstName
     @Override   public String getPersonNumber()         { return personNumber; }    //Method getPersonNumber
     @Override   public int getID()                      { return ID; }              //Method getID
-    @Override   public int getBoats()                   { return boats; }           //Method getBoats
+    @Override   public int getBoats()                   { return boats.size(); }    //Method getBoats
     
     
     
     /* Mutators ==> update object states */
-    @Override   public void addBoat()                               { boats++; }                            //Method addBoat
+    @Override   public void addBoat(Boat boat)                      { boats.add(boat); }                    //Method addBoat
     @Override   public void setPersonNumber(String personNumber)    { this.personNumber = personNumber; }   //Method setPersonNumber
     
     @Override
@@ -63,19 +65,11 @@ public class Member implements MemberListener  {   //Class Member starts
     }   //Method edit ends
     
     @Override
-    public void removeBoat() {  //Method removeBoat starts
+    public void removeBoat(Boat boat) {  //Method removeBoat starts
         
-        if (boats > 0)
-            boats--;
+        if (boats.contains(boat))
+            boats.remove(boat);
         
     }   //Method removeBoat ends
-    
-    @Override
-    public void setBoats(int boats) {   //Method setBoats starts
-        
-        if (boats >= 0)
-            this.boats = boats;
-        
-    }   //Method setBoats ends
     
 }   //Class Member ends
