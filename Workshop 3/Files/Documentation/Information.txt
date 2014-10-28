@@ -1,28 +1,49 @@
+------------------------
+--- Main Information ---
+------------------------
+
 Please note that in order to run the program a development environment is required that can compile / read / edit / etc .java files.
 Alternative, a .jar file can be used to directly run the program without the need for a development environment.
 Please read the document Instructions.txt for more information about running the program by using the .jar file.
 
-In order to run the program:
+
+
+-----------------------------
+--- Importing Source Code ---
+-----------------------------
+
+a) Using NetBeans IDE 8.0.1
+
+1) Start NetBeans.
+2) Go to: File -> New Project
+3) New window opens, in step 1. Choose Project, choose: Java -> Java Application, press next.
+4) Give your project a Project Name and a location on your pc where to store is, Create Main Clas is not required.
+5) Once the source folder is created on your pc, go to that folder.
+6) Copy my "src" folder into the main folder of your project. Netbeans should detect these files and add them in your new project.
+7) Run the project, choose a main class is required (only 1 main class is available to choose from).
+8) It should work now.
+
+PS: Most version of NetBeans work, for best results choose version 8.0.1 or newer.
+
+b) Using Eclipse
+
+Eclipse works the same way as NetBeans, but some names for the steps described above could be a bit different. Eclipse should also detect new files placed within your projects "src" folder.
+
+
+
+-----------------------------------
+--- In order to run the program ---
+-----------------------------------
+
 The development environment NetBeans 8.0.1 was used for this exercise, but Eclipse would work also.
 A Java Development Kit is required to run this program (JDK). JDK8 (version 1.8.0_20) was used for this exercise.
 A Java Runtime Environment would mostly like be required too (JRE). JRE8 (version 1.8.0_20) was used for this exercise.
-If you do not know how to compile / load / import the project into a development environment, then you should look it up at google.com.
+Please read the file Instructions.txt for more information about installing the JDK and JRE.
 
+
+
+----------------
+--- Warnings ---
+----------------
 Do not remove / replace / rename any files within the Workshop Folder is you are not sure of it's function.
-The project can read in saved data, but can only do so from a pre-determined location which is located at: /Files/Club.txt.
-You can place the entire Workshop 2 folder wherever you like on your computer.
-You can savely delete the Club.txt file, the program will start with a new database then.
-If Club.txt will rewrite itself with each change in the database, if the file does not exist it will be recreated.
-
-Running the program will check for the Club.txt at it's absolute path.
-So if you run the .jar file, the program will check from the within the folder the .jar file is located: /Files/Club.txt.
-If the folder Files does not exist, the program will recreate that will as soon the users selects a language within the program.
-You can safely delete the Files folder during usement of the program.
-The data will remain and the program recreates the Folder each time file writing take place.
-File loading is only used when starting the program.
-File saving is done with each given order, except for exiting the program or showing information (both compact and verbose).
-
-Due time constraints certain features are not implemented, such as a graphical user interface or error / input control.
-More improved code optimization would require more time.
-The program currently support 2 languages: English and Swedish.
-However, the source code and documentation are English only.
+You can place the entire Workshop 3 folder wherever you like on your computer.

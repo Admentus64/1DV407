@@ -1,6 +1,6 @@
 In order to run the .jar file you need to use a command program such as Windows CMD.exe tool.
-Use CMD to get into the folder of the .jar file and run the command: "java -jar workshop_2.jar".
-Alternative you can simply run the .bat file Workshop_2.bat which directly starts the .jar file.
+Use CMD to get into the folder of the .jar file and run the command: "java -jar Workshop_3_English.jar" or the command:  "java -jar Workshop_3_Swedish.jar".
+Alternative you can simply run the .bat file Workshop_2_English.bat or the .bat file Workshop_3_Swedish.bat which directly starts the .jar file.
 
 
 
