@@ -6,16 +6,69 @@
 package BlackJack.controller;
 import BlackJack.view.IView;
 import BlackJack.model.Game;
+import java.util.Observable;
+import java.util.Observer;
 
 /*
  * Changed quite a lot.
- * The old public boolean method Play still remains active, but is not used anymore.
- * Instead the method Play is now a void, which is called by the observer call by input.
+ * The old public boolean method Play is now replaced by a public void update.
+ * PlayGame now implements the Observer class.
  */
-public class PlayGame {
+public class PlayGame implements Observer {
+    
+    Game a_game;
+    IView a_view;
+    
+    public PlayGame(Game game, IView view) {
+        a_game = game;
+        a_view = view;
+    }
+    
+    @Override
+    public void update(Observable obj, Object arg) {
+        
+        if (arg instanceof String) {
+            
+            a_view.DisplayWelcomeMessage();
+            
+            a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
+            a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
+            
+            if (a_game.IsGameOver())
+                a_view.DisplayGameOver(a_game.IsDealerWinner());
+            
+            a_view.DisplayEnterInput();
+            
+            int input = a_view.GetInput();
+            
+            //Should respond whenever receiving a string input of "h" or "s", which are commands that grants cards to a player or dealer.
+            //The waiting time is 2 second, can be larger.
+            if (input == 'p')
+                a_game.NewGame();
+            
+            if (input == 'h') {
+                try { Thread.sleep(2000); }     //2 sec
+                catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+                a_game.Hit();
+            }
+            
+            if (input == 'a') {
+                try { Thread.sleep(2000); }     //2 sec
+                catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+                a_game.Stand();
+            }
+            
+            if (input == 'q')              //Exiting the program on receiving input q
+                System.exit(0);
+            
+        }
+        
+    }
+    
+    
     
     //The old Play method, which is currently not used anymore
-    public boolean Play(Game a_game, IView a_view) {
+    /* public boolean Play(Game a_game, IView a_view) {
         
         a_view.DisplayWelcomeMessage();
         
@@ -36,45 +89,6 @@ public class PlayGame {
                 
         return input != 'q';
         
-    }
-    
-    
-    
-    //The new Play method, which is used instead through the observer
-    public void Play(Game a_game, IView a_view, String input) {
-        
-        a_view.DisplayWelcomeMessage();
-        
-        a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
-        a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
-        
-        if (a_game.IsGameOver())
-            a_view.DisplayGameOver(a_game.IsDealerWinner());
-        
-        a_view.DisplayEnterInput();
-        
-        //Should respond whenever receiving a string input of "h" or "s", which are commands that grants cards to a player or dealer.
-        //The waiting time is 1 second, can be larger.
-        if (input.equals("p"))
-                a_game.NewGame();
-        
-        if (input.equals("h")) {
-            a_game.Hit();
-            try { Thread.sleep(1000); }     //1 sec
-            catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
-            //System.out.println("Testing delay");  //Uncomment this code to test delay.
-        }
-        
-        if (input.equals("s")) {
-            a_game.Stand();
-            try { Thread.sleep(1000); }     //1 sec
-            catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
-            //System.out.println("Testing delay");  //Uncomment this code to test delay.
-        }
-        
-        if (input.equals("q"))              //Exiting the program on receiving input q
-            System.exit(0);
-        
-    }
+    } */
     
 }
