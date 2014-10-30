@@ -12,7 +12,6 @@ import BlackJack.controller.PlayGame.gameAction;
  */
 public interface IView {
     
-    void DisplayStartup();          //New added message
     void DisplayEnterInput();       //New added message
     void DisplayInvalidInput();     //New added message
     void DisplayLastInput();        //New added message

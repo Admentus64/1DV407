@@ -14,7 +14,6 @@ package BlackJack.view;
 public class EnglishView extends AView  {
     
     //Two new display methods, for better user feedback.
-    @Override   public void DisplayStartup()        { System.out.print("Type in a letter and press enter to start: "); }
     @Override   public void DisplayEnterInput()     { System.out.print("Enter input: "); }
     @Override   public void DisplayInvalidInput()   { System.out.println("Unknown input, try again please."); }
     @Override   public void DisplayLastInput()      { System.out.print("Last input: "); }
@@ -42,7 +41,6 @@ public class EnglishView extends AView  {
             System.out.println("" + colors[a_card.GetColor().ordinal()] + " " + values[a_card.GetValue().ordinal()]);
         }
         
-        System.out.println("" + a_card.GetValue() + " of " + a_card.GetColor());
     }
     
     @Override

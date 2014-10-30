@@ -23,11 +23,10 @@ public class Program {
         IView v = new SwedishView();
         //PlayGame ctrl = new PlayGame();                           //Not needed anymore
         
-        v.DisplayStartup();                                         //Some startup instructions
-        
         //Observer Pattern
         final EventSource eventSource = new EventSource();
         final PlayGame responseHandler = new PlayGame(g, v);        //Create an observer
+        responseHandler.Play();
         eventSource.addObserver(responseHandler);                   //Subscribe the observer to the event source
         Thread thread = new Thread(eventSource);                    //Starts the event thread
         thread.start();

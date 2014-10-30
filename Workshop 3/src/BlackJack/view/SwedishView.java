@@ -15,7 +15,6 @@ package BlackJack.view;
 public class SwedishView extends AView {
     
     //Two new display methods, for better user feedback
-    @Override   public void DisplayStartup()        { System.out.print("Mata in en bokstav och tryck enter för att börja: "); }
     @Override   public void DisplayEnterInput()     { System.out.print("Ange inmatning: "); }
     @Override   public void DisplayInvalidInput()   { System.out.println("Okänt inmatning, försök igen gärna."); }
     @Override   public void DisplayLastInput()      { System.out.print("Senaste inmatning: "); }

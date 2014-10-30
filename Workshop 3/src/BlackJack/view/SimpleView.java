@@ -14,7 +14,6 @@ package BlackJack.view;
 public class SimpleView extends AView  {
     
     //Two new display methods, for better user feedback.
-    @Override   public void DisplayStartup()        { System.out.print("Type in a letter and press enter to start: "); }
     @Override   public void DisplayEnterInput()     { System.out.print("Enter input: "); }
     @Override   public void DisplayInvalidInput()   { System.out.println("Unknown input, try again please."); }
     @Override   public void DisplayLastInput()      { System.out.print("Last input: "); }

@@ -37,46 +37,53 @@ public class PlayGame implements Observer {
     
     
     
+    //Part of the observer, when input is seen, run the game.
     @Override
     public void update(Observable obj, Object arg) {
         
-        if (arg instanceof String) {
-            
-            a_view.DisplayWelcomeMessage();
-            
-            a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
-            a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
-            
-            if (a_game.IsGameOver())
-                a_view.DisplayGameOver(a_game.IsDealerWinner());
-            
-            a_view.DisplayEnterInput();
-            gameAction input = a_view.GetInput();
-            
-            //Should respond whenever receiving a gameAction input of the current View Language class, which are commands that grants cards to a player or dealer.
-            if (input == gameAction.play) {
-                sleep(2000);
-                a_game.NewGame();
-            }
-            
-            if (input == gameAction.hit) {
-                sleep(2000);
-                a_game.Hit();
-            }
-            
-            if (input == gameAction.stand) {
-                sleep(2000);
-                a_game.Stand();
-            }
-            
-            if (input == gameAction.quit)              //Exiting the program on receiving input q
-                System.exit(0);
-            
-            if (input == gameAction.invalid) {
-                a_view.DisplayInvalidInput();
-                sleep(3000);
-            }
-            
+        if (arg instanceof String)
+            Play();
+        
+    }
+    
+    
+    
+    //The new Play method, but no longer a boolean method.
+    public void Play() {
+        
+        a_view.DisplayWelcomeMessage();
+        
+        a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
+        a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
+        
+        if (a_game.IsGameOver())
+            a_view.DisplayGameOver(a_game.IsDealerWinner());
+        
+        a_view.DisplayEnterInput();
+        gameAction input = a_view.GetInput();
+        
+        //Should respond whenever receiving a gameAction input of the current View Language class, which are commands that grants cards to a player or dealer.
+        if (input == gameAction.play) {
+            sleep(2000);
+            a_game.NewGame();
+        }
+        
+        if (input == gameAction.hit) {
+            sleep(2000);
+            a_game.Hit();
+        }
+        
+        if (input == gameAction.stand) {
+            sleep(2000);
+            a_game.Stand();
+        }
+        
+        if (input == gameAction.quit)              //Exiting the program on receiving input q
+            System.exit(0);
+        
+        if (input == gameAction.invalid) {
+            a_view.DisplayInvalidInput();
+            sleep(3000);
         }
         
     }
