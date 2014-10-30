@@ -13,6 +13,7 @@ import java.util.Observer;
  * Changed quite a lot.
  * The old public boolean method Play is now replaced by a public void update.
  * PlayGame now implements the Observer class.
+ * The
  */
 public class PlayGame implements Observer {
     
@@ -23,6 +24,18 @@ public class PlayGame implements Observer {
         a_game = game;
         a_view = view;
     }
+    
+    
+    
+    public enum gameAction {
+        play,
+        hit,
+        stand,
+        quit,
+        invalid
+    }
+    
+    
     
     @Override
     public void update(Observable obj, Object arg) {
@@ -38,33 +51,45 @@ public class PlayGame implements Observer {
                 a_view.DisplayGameOver(a_game.IsDealerWinner());
             
             a_view.DisplayEnterInput();
+            gameAction input = a_view.GetInput();
             
-            int input = a_view.GetInput();
-            
-            //Should respond whenever receiving a string input of "h" or "s", which are commands that grants cards to a player or dealer.
-            //The waiting time is 2 second, can be larger.
-            if (input == 'p')
+            //Should respond whenever receiving a gameAction input of the current View Language class, which are commands that grants cards to a player or dealer.
+            if (input == gameAction.play) {
+                sleep(2000);
                 a_game.NewGame();
+            }
             
-            if (input == 'h') {
-                try { Thread.sleep(2000); }     //2 sec
-                catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+            if (input == gameAction.hit) {
+                sleep(2000);
                 a_game.Hit();
             }
             
-            if (input == 'a') {
-                try { Thread.sleep(2000); }     //2 sec
-                catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+            if (input == gameAction.stand) {
+                sleep(2000);
                 a_game.Stand();
             }
             
-            if (input == 'q')              //Exiting the program on receiving input q
+            if (input == gameAction.quit)              //Exiting the program on receiving input q
                 System.exit(0);
+            
+            if (input == gameAction.invalid) {
+                a_view.DisplayInvalidInput();
+                sleep(3000);
+            }
             
         }
         
     }
     
+    
+    
+    //New private method for waiting timer. The waiting time should be 2 or 3 seconds for now, can be larger.
+    private void sleep(int timer) {
+        
+        try { Thread.sleep(timer); }         //2 sec
+        catch(InterruptedException e) { Thread.currentThread().interrupt(); }
+        
+    }
     
     
     //The old Play method, which is currently not used anymore

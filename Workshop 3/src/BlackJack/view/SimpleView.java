@@ -7,14 +7,17 @@ package BlackJack.view;
 
 /*
  * Mostly left untouched.
- * Added two new display messages and an extra line print.
+ * Added three new display messages and an extra line print.
  * Not a change however, but GetInput is not used anymore.
+ * Is now extended by AView which implements IView.
  */
-public class SimpleView implements IView  {
+public class SimpleView extends AView  {
     
     //Two new display methods, for better user feedback.
-    @Override   public void DisplayStartup()    { System.out.print("Enter custom input to start (not q which ends the game): "); }
-    @Override   public void DisplayEnterInput() { System.out.print("Enter input: "); }
+    @Override   public void DisplayStartup()        { System.out.print("Type in a letter and press enter to start: "); }
+    @Override   public void DisplayEnterInput()     { System.out.print("Enter input: "); }
+    @Override   public void DisplayInvalidInput()   { System.out.println("Unknown input, try again please."); }
+    @Override   public void DisplayLastInput()      { System.out.print("Last input: "); }
     
     @Override
     public void DisplayWelcomeMessage() {
@@ -24,18 +27,6 @@ public class SimpleView implements IView  {
         
         System.out.println("Hello Black Jack World");
         System.out.println("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
-        
-    }
-    
-    //Input is now done by the Response Handler
-    @Override
-    public int GetInput() {
-        
-        try { return System.in.read(); }
-        catch (java.io.IOException e) {
-            System.out.println("" + e);
-            return 0;
-        }
         
     }
     

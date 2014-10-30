@@ -7,15 +7,18 @@ package BlackJack.view;
 
 /*
  * Mostly left untouched.
- * Added two new display messages and an extra line print.
+ * Added three new display messages and an extra line print.
  * Not a change however, but GetInput is not used anymore.
  * Code regarding hidden cards is adjusted (see Card.java).
+ * Is now extended by AView which implements IView.
  */
-public class SwedishView implements IView {
+public class SwedishView extends AView {
     
     //Two new display methods, for better user feedback
-    @Override   public void DisplayStartup()    { System.out.print("Ange valfritt inmattning för att börja (icke q som avsluttar spelet): "); }
-    @Override   public void DisplayEnterInput() { System.out.print("Ange inmattning: "); }
+    @Override   public void DisplayStartup()        { System.out.print("Mata in en bokstav och tryck enter för att börja: "); }
+    @Override   public void DisplayEnterInput()     { System.out.print("Ange inmatning: "); }
+    @Override   public void DisplayInvalidInput()   { System.out.println("Okänt inmatning, försök igen gärna."); }
+    @Override   public void DisplayLastInput()      { System.out.print("Senaste inmatning: "); }
     
     @Override
     public void DisplayWelcomeMessage() {
@@ -26,18 +29,6 @@ public class SwedishView implements IView {
         System.out.println("Hej Black Jack Världen");
         System.out.println("----------------------");
         System.out.println("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
-        
-    }
-    
-    //Input is now done by the Response Handler
-    @Override
-    public int GetInput() {
-        
-        try { return System.in.read(); }
-        catch (java.io.IOException e) {
-            System.out.println("" + e);
-            return 0;
-        }
         
     }
     

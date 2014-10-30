@@ -9,12 +9,15 @@ package BlackJack.view;
  * Newly added class.
  * A full english implementation of the IView interface, SimpleView was just not complete enough.
  * Most sentices from the SimpleView implementation are reused within this implementation.
+ * Is now extended by AView which implements IView.
  */
-public class EnglishView implements IView  {
+public class EnglishView extends AView  {
     
     //Two new display methods, for better user feedback.
-    @Override   public void DisplayStartup()    { System.out.print("Enter custom input to start (not q which ends the game): "); }
-    @Override   public void DisplayEnterInput() { System.out.print("Enter input: "); }
+    @Override   public void DisplayStartup()        { System.out.print("Type in a letter and press enter to start: "); }
+    @Override   public void DisplayEnterInput()     { System.out.print("Enter input: "); }
+    @Override   public void DisplayInvalidInput()   { System.out.println("Unknown input, try again please."); }
+    @Override   public void DisplayLastInput()      { System.out.print("Last input: "); }
     
     @Override
     public void DisplayWelcomeMessage() {
@@ -25,18 +28,6 @@ public class EnglishView implements IView  {
         System.out.println("Hello Black Jack World");
         System.out.println("----------------------");
         System.out.println("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
-        
-    }
-    
-    //Input is now done by the Response Handler
-    @Override
-    public int GetInput() {
-        
-        try { return System.in.read(); }
-        catch (java.io.IOException e) {
-            System.out.println("" + e);
-            return 0;
-        }
         
     }
     
