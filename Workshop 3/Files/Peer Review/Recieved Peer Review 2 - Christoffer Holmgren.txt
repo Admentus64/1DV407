@@ -1,0 +1,29 @@
+Peer review
+
+The dealer and I got 4 cards, but its really just 2 cards, but they are displayed in two different ways.
+Standing doesnt seem to work when I have more than 21
+Hitting doesn't work either, but it doesn't end
+Only q works, but that shuts the program down
+
+Workshop 3 swedish.bat
+doesn't display 2 differnt ways of the same value of card
+Got 20 and stand doesn't work, hitting again gave me a 3 and i was reset back to 13 points, which makes sense
+How do you end the game?
+The delay works
+Doesn't work to stand so I can't really check anything related the other things
+
+Observable is using the java implementation, but I have no idea how that actually works. So it will be flaky
+It notifies the observers with the response string that it reads from System.in
+The observable code is stolen from Wikipedia
+
+The controller still has the string dependency of 'q' 's' 'h' 'q'. But instead of 's' the code is changed to 'a' which is the real reason to why string dependency is really bad. If the view handled all of the strings then the controller wouldn't have this bug and standing would work no matter what you change the key to.
+
+Shouldn't you just use Player for both the a_dealer and the a_player since they are just behaving as players at this instance? Inheritance and specialization means that you do not need to specify that the dealer is a dealer, just that he is a player.
+
+The duplicate code seems to be removed. The code is moved to DealCard in the Dealer.java file. This introduces a dependency from the Dealer to Card which is not displayed in the diagram.
+
+The diagram is updated to display that PlayGame has no real connection to Game, but in the code PlayGame has an association to Game that is called a_game. In the diagram the PlayGame class has a dependency to IView, but in the code it has an association called a_view. It does have an dependency, but it has both.
+
+I'm not quite sure if the Observer pattern is correctly implemented. The controller is the Observer and does the updating, but the model isn't the one telling the controller that it has new information. Instead it uses a controller/view class that does the Observable thingy, since it isn't the delaer that tells the controller that it has handed out a card, it is the Console that tells the controller that the user has pressed a button. Might seem like a small thing, but isn't it quite big? The Console is a view related thing and as such should not bother itself with things related to the model, other than displaying it. This is not the way that I did it, but I am not quite sure that my way is in anyway correct either.
+
+The implementation has not passed the grade 3 criteria since the controller still has a string dependency between itself and the view. As I am not sure about the Observer pattern either it might not have passed it because of that.

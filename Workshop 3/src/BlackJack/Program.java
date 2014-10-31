@@ -23,10 +23,16 @@ public class Program {
         IView v = new SwedishView();
         //PlayGame ctrl = new PlayGame();                           //Not needed anymore
         
-        //Observer Pattern
-        final EventSource eventSource = new EventSource();
+        /*
+         * Observer Pattern
+         * Untouched example from wikipedia, replaced the print out with the method Play.
+         * Link found through -> "Workshop 3 - Design Using Patterns": http://en.wikipedia.org/wiki/Observer_pattern.
+         * Try to comment away the last three rows, and you will see that the program continues for only 1 input round.
+         * Thanks to the observer, the input can continue as long as it is given.
+         */
+        final EventSource eventSource = new EventSource();          //Create an event source - reads from stdin
         final PlayGame responseHandler = new PlayGame(g, v);        //Create an observer
-        responseHandler.Play();
+        responseHandler.Play();                                     //Run a round of gameplay, after this is done, the observer kicks in
         eventSource.addObserver(responseHandler);                   //Subscribe the observer to the event source
         Thread thread = new Thread(eventSource);                    //Starts the event thread
         thread.start();

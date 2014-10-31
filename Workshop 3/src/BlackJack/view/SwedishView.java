@@ -27,7 +27,7 @@ public class SwedishView extends AView {
         
         System.out.println("Hej Black Jack Världen");
         System.out.println("----------------------");
-        System.out.println("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
+        System.out.println("Skriv 'p' för att Spela, 'h' för Träff, 's' för att Stanna eller 'q' för att avsluta\n");
         
     }
     

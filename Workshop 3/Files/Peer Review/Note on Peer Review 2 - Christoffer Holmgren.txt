@@ -1,0 +1,20 @@
+Christoffer Holmgrens peer review is based on an old version of my project.
+
+
+
+Secondly regarding stealing from wikipedia.
+The code comments clearly state it's source.
+
+The code is found through:
+https://coursepress.lnu.se/kurs/objektorienterad-analys-och-design-med-uml/en/workshops/workshop-3-design-using-patterns/
+On this page the sublink to: http://en.wikipedia.org/wiki/Observer_pattern is found.
+The reference to this code with the use of comments, was used in all version of the project.
+
+It is only logical an example from Wikipedia was used as it came from the same page that teacher provided me.
+However, the implementation was done by myself and adjusted where needed to. So the question remains if there is a copyright issue that code? If not, I don't think there is an issue?
+
+
+
+He did also mention that Stand did not work. This is only partly correct.
+In older version the command for Stand was given by accident to 'a' instead of 's'.
+He described a lot of other input command bugs, which I however could not find.

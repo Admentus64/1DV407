@@ -38,6 +38,8 @@ public class PlayGame implements Observer {
     
     
     //Part of the observer, when input is seen, run the game.
+    //Almost untouched example from wikipedia, replaced the print out with the method Play.
+    //Link found through -> "Workshop 3 - Design Using Patterns": http://en.wikipedia.org/wiki/Observer_pattern.
     @Override
     public void update(Observable obj, Object arg) {
         
