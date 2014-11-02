@@ -27,7 +27,7 @@ public class PlayGame implements Observer {
     
     
     
-    public enum gameAction {
+    public enum command {
         play,
         hit,
         stand,
@@ -62,30 +62,28 @@ public class PlayGame implements Observer {
             a_view.DisplayGameOver(a_game.IsDealerWinner());
         
         a_view.DisplayEnterInput();
-        gameAction input = a_view.GetInput();
+        command input = a_view.GetInput();
         
-        //Should respond whenever receiving a gameAction input of the current View Language class, which are commands that grants cards to a player or dealer.
-        if (input == gameAction.play) {
-            sleep(2000);
-            a_game.NewGame();
-        }
-        
-        if (input == gameAction.hit) {
-            sleep(2000);
-            a_game.Hit();
-        }
-        
-        if (input == gameAction.stand) {
-            sleep(2000);
-            a_game.Stand();
-        }
-        
-        if (input == gameAction.quit)              //Exiting the program on receiving input q
-            System.exit(0);
-        
-        if (input == gameAction.invalid) {
-            a_view.DisplayInvalidInput();
-            sleep(3000);
+        switch (input) {                //Should respond whenever receiving a command input of the current View Language class, which are commands that grants cards to a player or dealer.
+            case play:
+                sleep(2000);
+                a_game.NewGame();
+                break;
+            case hit:
+                sleep(2000);
+                a_game.Hit();
+                break;
+            case stand:
+                sleep(2000);
+                a_game.Stand();
+                break;
+            case quit:                  //Exiting the program on receiving input q
+                System.exit(0);
+                break;
+            case invalid:
+                a_view.DisplayInvalidInput();
+                sleep(3000);
+                break;
         }
         
     }
